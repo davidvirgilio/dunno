@@ -26,3 +26,5 @@ npm run dev
 ```sh
 npm run build
 ```
+
+Thank you.
