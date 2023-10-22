@@ -6,7 +6,7 @@ import { storeToRefs } from 'pinia';
 import * as math from 'mathjs';
 import { computed } from 'vue';
 
-const title = 'Your best options is...'
+const title = 'Your best option is...'
 
 
 // const criteriaStore = useCriteria()
@@ -17,6 +17,8 @@ const optionsMatrices = optionsStore.optionsMatrices;
 const {optionsList} = storeToRefs(optionsStore);
 const {criteriaList} = storeToRefs(criteriaStore);
 const criteriaWeights= [];
+
+if(criteriaList.value.length < 2 || optionsList.value.length > 2) { window.location.replace("/options")}
 
 criteriaList.value.map((criterion) => criteriaWeights.push(criterion.weight))
 

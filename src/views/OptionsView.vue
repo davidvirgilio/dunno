@@ -20,7 +20,7 @@ const isActive = () => { return optionsList.value.length > 1 }
         <form @submit.prevent="addOption" class="w-100">
             <label for="option" class="pb-4 ">Option:</label>
             <div class="d-flex gap-4 flex-wrap flex-sm-nowrap justify-content-end">
-                <input id="option" class="form-control-xl" v-model="newOption" type="text"  placeholder="Type an option">
+                <input id="option" class="form-control-xl" v-model="newOption" maxlength="20"  type="text"  placeholder="Type an option">
                 <button type="submit" class="btn-light" >Enter</button>
             </div>
         </form>

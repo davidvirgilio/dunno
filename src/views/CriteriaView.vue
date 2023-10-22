@@ -2,16 +2,22 @@
 import { useCriteria } from '../stores/criteria';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
+import { useOptions } from '../stores/options';
+
 
 const title = "Specify the criteria you want to consider when making your decision."
 
 const store = useCriteria();
+const optionsStore = useOptions()
+
+const { optionsList} = storeToRefs(optionsStore)
 const {newCriterion, criteriaList} = storeToRefs(store);
 const { addCriterion, removeCriterion } = store;
 
 const isActive = () => { return criteriaList.value.length > 1 }
 
 
+if(optionsList.value.length < 2) { window.location.replace("/options")}
 </script>
 
 <template>
@@ -20,7 +26,7 @@ const isActive = () => { return criteriaList.value.length > 1 }
         <form @submit.prevent="addCriterion" class="w-100">
             <label for="criterion" class="pb-4 ">Criterion:</label><br>
             <div class="d-flex gap-4 flex-wrap flex-sm-nowrap justify-content-end">
-                <input id="criterion" class="form-control-xl" v-model="newCriterion" type="text"  placeholder="Type a criterion">
+                <input id="criterion" class="form-control-xl" v-model="newCriterion" type="text" maxlength="20"  placeholder="Type a criterion">
                 <button type="submit" class="btn-light" >Enter</button>
             </div>
         </form>

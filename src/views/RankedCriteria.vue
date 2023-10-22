@@ -7,12 +7,14 @@ import * as math from 'mathjs';
 
 
 const title = 'Rank your criteria'
-const message = 'Based on your selections, we\'ll help you gauge the importance of your criteria.'
+const message = 'Based on your selections, the level of importance of your criteria is:'
 
 const store = useCriteria()
 const {matrix, criteriaList} = storeToRefs(store)
-const count = 1;
 
+
+
+if(criteriaList.value.length < 2) { window.location.replace("/options")}
 
 function normalize(matrix){
     const normalizedMatrix = []
@@ -44,6 +46,8 @@ const sortedCriteriaList = computed(() =>
   criteriaList.value.slice().sort((a, b) => b.weight - a.weight)
 );
 
+
+
 </script>
 
 <template>
@@ -51,8 +55,8 @@ const sortedCriteriaList = computed(() =>
         <h1 v-text="title"></h1>
         <p v-text="message"></p>
         <ol class="d-flex bg-white container-sm flex-column gap-4 w-100 justify-content-center bg-white p-5 rounded">
-            <li v-for="criteria in sortedCriteriaList" :key="criteria.text" class="d-flex gap-5 align-items-center justify-content-center"> 
-                <span class="number">{{ count++ }}</span><span class="bg-purple-inv text-center rounded-4 p-3 w-75">{{ criteria.text }}</span>
+            <li v-for="criteria,index  in sortedCriteriaList" :key="criteria.text" class="d-flex gap-5 align-items-center justify-content-center"> 
+                <span class="number">{{ index + 1 }}</span><span class="bg-purple-inv text-center rounded-4 p-3 w-75">{{ criteria.text }}</span>
             </li>
         </ol>
         <div class="d-flex gap-5">

@@ -6,7 +6,7 @@ import { storeToRefs } from 'pinia';
 import RangeComponent from '../components/RangeComponent.vue';
 
 
-const title='Option Comparison:'
+const title='Option Comparison.'
 const message = 'Considering the shown criteria, which option is better for you?';
 
 const criteriaStore = useCriteria()
@@ -18,6 +18,7 @@ const optionsLength = optionsStore.optionsLength;
 const { updateOptionsMatrix } = optionsStore
 let count = 0;
 
+if(criteriaList.value.length < 2 || optionsList.value.length < 2) { window.location.replace("/options")}
 
 //------------------------------------------------------------
 // The number of OPTIONS determines the SIZE of the matrix
@@ -38,14 +39,14 @@ console.log(optionsSliders.value[0].value._data[0][1])
         
         <article class="section-options d-flex flex-column align-content-center w-100" v-for="i in optionsLength" :key="i">
             <section class="section-criteria" v-for="j in optionsLength" :key="j">
-                <div v-if="j <= optionsLength-i" class="d-flex flex-column justify-content-between w-100  mb-5" :count="count++">
-                    <h3>Battle {{ count }}</h3>
+                <div v-if="j <= optionsLength-i" class="d-flex flex-column justify-content-between w-100  mb-5" >
+                    <h3>Battle {{ ++count }}</h3>
                     <div class="d-flex justify-content-between align-items-center py-5">
-                        <div class="circle" style="min-width: fit-content;">
+                        <div class="circle">
                             {{ optionsList[i-1].text }}
                         </div>
                         <span class="h1 huge">vs</span>
-                        <div class="circle" style="min-width: fit-content;">
+                        <div class="circle">
                             {{ optionsList[i+j-1].text }}
                         </div>
                     </div>
