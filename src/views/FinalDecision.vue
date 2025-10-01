@@ -18,7 +18,7 @@ const {optionsList} = storeToRefs(optionsStore);
 const {criteriaList} = storeToRefs(criteriaStore);
 const criteriaWeights= [];
 
-if(criteriaList.value.length < 2 || optionsList.value.length > 2) { window.location.replace("/options")}
+if(criteriaList.value.length < 2 || optionsList.value.length < 2) { window.location.replace("/options")}
 
 criteriaList.value.map((criterion) => criteriaWeights.push(criterion.weight))
 

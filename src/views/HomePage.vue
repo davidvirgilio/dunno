@@ -2,7 +2,7 @@
 import { RouterLink } from 'vue-router';
 
 const h1 = "The easiest way to make the right decisions.";
-const welcome = "We know making decision is not as easy as it should be. Let us help you with the process, and enjoy the benefits of smart decision.";
+const welcome = "We understand that decision-making isn't always as straightforward as we'd like it to be. Allow us to assist you through the process and reap the rewards of well-informed choices.";
 
 
 </script>
